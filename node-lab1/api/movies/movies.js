@@ -1,4 +1,4 @@
-export const moviesObject = {
+export const movieObject = {
     "movies": [
       {
         "title": "The Avengers",
