@@ -1,17 +1,18 @@
-// Load the http module to create an http server.
-import http from 'http';
 import dotenv from 'dotenv';
+import express from 'express';
+import moviesRouter from './api/movies';
 
 dotenv.config();
 
+const app = express();
+
 const port = process.env.PORT;
-// Configure our HTTP server to respond with Hello World to all requests.
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello  EWD!');
+
+app.use(express.static('public'));
+
+app.use('/api/movies', moviesRouter);
+app.use(express.static('public'));
+
+app.listen(port, () => {
+  console.info(`Server running at ${port}`);
 });
-
-server.listen(port);
-
-// Put a friendly message on the terminal
-console.log(`Server running at ${port}`);
