@@ -17,7 +17,15 @@ router.get('/:id', (req, res, next) => {
 
 router.get('/:id/reviews', (req, res, next) => {
   const id = parseInt(req.params.id);
-  getMovieReviews(id).then(reviews => res.status(200).send(reviews));
+  Movie.findMovieReviews(id)
+  .then(results => res.status(200).send(results))
+});
+
+router.post('/:id/reviews', (req, res) => {
+  const id = parseInt(req.params.id);
+  Movie.findByMovieDBId(id).then(movie => {
+    movie.reviews.push(req.body)
+    movie.save().then(res.status(200).send(movie.reviews))});
 });
 
 

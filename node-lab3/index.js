@@ -10,6 +10,7 @@ import moviesRouter from './api/movies/index';
 import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs'
+import passport from './authenticate';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ const errorHandler=(err,req,res,next)=>{
 }
 
 //configure body-parser
+app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
@@ -40,7 +42,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use('/api/movies', authenticate, moviesRouter);
+app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
 app.use('/api/genres', genresRouter);
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/users', usersRouter);
