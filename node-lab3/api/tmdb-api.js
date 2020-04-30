@@ -27,3 +27,19 @@ export const getMovies = () => {
     )
       .then(res => res.json());
   };
+
+  export const getMovieVideos = id => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.TMDB_KEY}`
+    )
+     .then(res => res.json())
+  };
+  
+  
+  export const getMovieCredits = id => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.TMDB_KEY}`
+    )
+     .then(res => res.json())
+  };
+  

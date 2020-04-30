@@ -5,7 +5,7 @@ import {
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   getGenres().then(genres => res.status(200).send(genres));
 });
 
