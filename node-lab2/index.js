@@ -1,3 +1,5 @@
+import session from 'express-session';
+import authenticate from './authenticate';
 import './db'
 import usersRouter from './api/users';
 import {loadUsers, removeFavourites} from './seedData'
@@ -31,7 +33,14 @@ app.use(bodyParser.urlencoded());
 
 app.use(express.static('public'));
 
-app.use('/api/movies',  moviesRouter);
+//session middleware
+app.use(session({
+  secret: 'ilikecake',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use('/api/movies', authenticate, moviesRouter);
 app.use('/api/genres', genresRouter);
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/users', usersRouter);
