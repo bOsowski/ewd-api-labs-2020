@@ -43,6 +43,6 @@
   "scripts": {
       "start": "cross-env NODE_ENV=development nodemon --exec babel-node index.js",
       "unit-test": "cross-env NODE_ENV=test mocha ./api/**/tests/*.js --require babel-core/register --require babel-polyfill --exit",
-      "test": "cross-env NODE_ENV=test mocha ./tests/*.js --require babel-core/register --require babel-polyfill --exit"
+      "test": "cross-env NODE_ENV=test mocha ./tests/*.js --require babel-core/register --require babel-polyfill --reporter mochawesome"
   }
 }
