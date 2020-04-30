@@ -2,7 +2,6 @@ import session from 'express-session';
 import authenticate from './authenticate';
 import './db'
 import usersRouter from './api/users';
-import {loadUsers, removeFavourites} from './seedData'
 import dotenv from 'dotenv';
 import express from 'express';
 import genresRouter from './api/genres/index';
@@ -14,14 +13,9 @@ import passport from './authenticate';
 
 dotenv.config();
 
-const app = express();
+export const app = express(); //replaces the previous const app = express();
 const port = process.env.PORT;
 const swaggerDocument = YAML.load('./../movie-api-yaml/swagger.yaml');
-
-if(process.env.seedDb){
-	loadUsers();
-	removeFavourites();
-}
 
 const errorHandler=(err,req,res,next)=>{
   console.log(err);
@@ -52,3 +46,4 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.info(`Server running at ${port}`);
 });
+
