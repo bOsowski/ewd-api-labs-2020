@@ -1,91 +1,110 @@
 # Assignment 2 - Web API.
 
-Name: Your Name
+Name: Bartosz Osowski
 
 ## Overview
 
 Give a brief overview of the Web API functionality.
 
+The Express API allows users with a valid authentication token to access resources such as movies, reviews, movie cast and others relevant to the movie domain. New users can be easily registered if needed, granting access to the API.
+
 ## Installation Requirements
 
-Describe what needs to be on the machine to run the API (Node v?, NPM, MongoDB instance, any other 3rd party software not in the package.json). 
+#### Packages Used:
 
+Node.js v13.12.0
+npm 6.14.4
+Mongodb running instance. I have used a free tier one on https://cloud.mongodb.com/
 
-Describe getting/installing the software, perhaps:
-
-```bat
-git clone http:\myrepo.git
-```
-
-followed by installation
-
-```bat
-git install
-```
+#### Checkout and Run
+`git clone https://github.com/bOsowski/ewd-api-labs-2020 && cd ewd-api-labs-2020 && cd expressApp`
+`npm install && npm start`
 
 ## API Configuration
-Describe any configuration that needs to take place before running the API. For example, creating an ``.env`` and what variables to put in it. Give an example of how this might be structured/done.
-REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE READ.ME.
 
-```bat
+Create a .env file with the following context: (substitude the mongoDB server for your own)
+
+```
 NODE_ENV=development
 PORT=8080
-HOST=
-mongoDB=YourMongoURL
+HOST=localhost
+SWAGGER_DOC=../movie-api-yaml/swagger.yaml
+TMDB_KEY=<TMDBKEY>
+mongoDB=mongodb+srv://bosowski:<password>@cluster0-q41hh.mongodb.net/test?retryWrites=true&w=majority
 seedDb=true
-secret=YourJWTSecret
+secret=ilikecake
 ```
 
 ## Startup
-Describe how to start/stop the API. You could go though the ``scripts:`` property of the *package.json* file.
+The following scripts are specified in the package.json:
+```
+  "scripts": {
+      "start": "cross-env NODE_ENV=development nodemon --exec babel-node index.js",
+      "unit-test": "cross-env NODE_ENV=test mocha ./api/**/tests/*.js --require babel-core/register --require babel-polyfill --exit",
+      "test": "cross-env NODE_ENV=test mocha ./tests/*.js --require babel-core/register --require babel-polyfill --reporter mochawesome"
+  }
+```
+`npm start` will start the API application
+
+`npm run unit-test` will start executing the unit tests
+
+`npm test` will execute integration tests and will also output to expressApp/mochawesome-report/
 
 ## API Design
-Give an overview of your web API design. If you don't have a Swagger description, you could describe similar to the following: 
 
 |  |  GET | POST | PUT | DELETE
 | -- | -- | -- | -- | -- 
-| /api/movies |Gets a list of movies | N/A | N/A |
+| /api/movies |Get a list of movies | N/A | N/A | N/A
 | /api/movies/{movieid} | Get a Movie | N/A | N/A | N/A
-| /api/movies/{movieid}/reviews | Get all reviews for movie | Create a new review for Movie | N/A | N/A  
-| ... | ... | ... | ... | ...
+| /api/movies/{movieid}/reviews | Get reviews for movie | Create a new review for Movie | N/A | N/A  
+| /api/movies/{movieid}/credits | Get credits for movie | N/A | N/A | N/A  
+| /api/movies/{movieid}/videos | Get videos for movie | N/A | N/A | N/A  
+| /api/users/ | Get users | Register/login in a user | N/A | N/A 
+| /api/genres | Get movie genres | N/A | N/A | N/A
 
-If you have the API design on SwaggerHub or elsewhere, just link to Swagger:
-
-[SwaggerHub Doc](https://app.swaggerhub.com/apis-docs/fxwalsh/Movie/lab3)
+[SwaggerHub Doc](https://app.swaggerhub.com/apis/bosowski4/expressAPI/initial)
 
 
 ## Security and Authentication
-. Give details of any authentication/ security implemented on the API. Indicate which routes are protected.
+The API protected endpoints can be accessed by the use of tokens.To receive a token, authenticate a user via a post request to `/api/users?action=authenticate`, specifying the username and password in the body as JSON (eg. `{"username":"user1", "password":"test1"}`).
+
+All routes are protected apart from the `/api/users` route.
 
 ## Testing
-. Briefly explain any testing strategy that accompanies the project, including and example report if you have one...
-![][image1]
+The API has unit tests which verify that the user validation parts are working correctly and integration tests verifying access and user validation.
+![Tests](./tests.png)
 
 ## Integrating with React App
 
-Describe how you integrated your React app with the API. Perhaps link to the React App repo and give an example of an API call from React App. For example: 
+[React app repo](https://github.com/bOsowski/MovieApp)
 
+#### Calls to the API from the React app:
 ~~~Javascript
-export const getMovies = () => {
+export const getMovieCredits = id => {
   return fetch(
-     '/api/movies',{headers: {
-       'Authorization': window.localStorage.getItem('token')
-    }
-  }
-  )
+    `/api/movies/${id}/credits`,
+    {headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+)
     .then(res => res.json())
-    .then(json => {return json.results;});
 };
 
+export const getMovieVideos = id => {
+  return fetch(
+    `/api/movies/${id}/videos`,
+    {headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+)
+    .then(res => res.json())
+};
 ~~~
 
 ## Extra features
 
-. . Briefly explain any non-standard features, functional or non-functional (e.g. user registration, authentication) developed for the app  
+Added two extra API enpoints for fetching of related movie videos and cast.
 
 ## Independent learning.
-
-. . State the non-standard aspects of React/Express/Node (or other related technologies) that you researched and applied in this assignment . .  
-
-
-[image1]: ./testing.png

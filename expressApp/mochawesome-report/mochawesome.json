@@ -5,9 +5,9 @@
     "passes": 5,
     "pending": 0,
     "failures": 0,
-    "start": "2020-04-30T20:32:47.412Z",
-    "end": "2020-04-30T20:32:49.228Z",
-    "duration": 1816,
+    "start": "2020-05-01T14:36:33.919Z",
+    "end": "2020-05-01T14:36:36.099Z",
+    "duration": 2180,
     "testsRegistered": 5,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "02b9c243-8b8e-42be-984b-1edced5010fc",
+      "uuid": "a826221e-f118-4782-9989-ed4566423c0c",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,16 +27,16 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "025aba0c-9174-49bd-ac99-67632e8989e6",
+          "uuid": "381d62b8-4cb1-4c47-9efd-5a460ac2a240",
           "title": "Movies API test",
-          "fullFile": "/home/bosowski/Documents/college/labs/ewd-api-labs-2020/node-lab3/tests/testMoviesApi.js",
+          "fullFile": "/home/bosowski/Documents/college/labs/ewd-api-labs-2020/expressApp/tests/testMoviesApi.js",
           "file": "/tests/testMoviesApi.js",
           "beforeHooks": [
             {
               "title": "\"before all\" hook",
               "fullTitle": "Movies API test \"before all\" hook",
               "timedOut": false,
-              "duration": 682,
+              "duration": 921,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "testUser.username = 'user1';\ntestUser.password = 'test1';\n_userModel2.default.create(testUser).then(function (result) {\n  return done();\n}).catch(function (err) {\n  return done(err);\n});",
               "err": {},
-              "uuid": "0684c256-0293-4c16-ad8e-48e51102ddc5",
-              "parentUUID": "025aba0c-9174-49bd-ac99-67632e8989e6",
+              "uuid": "18fbda15-ec84-46fa-99c9-7323859dbf92",
+              "parentUUID": "381d62b8-4cb1-4c47-9efd-5a460ac2a240",
               "isHook": true,
               "skipped": false
             }
@@ -57,7 +57,7 @@
               "title": "should get a list of Movies",
               "fullTitle": "Movies API test should get a list of Movies",
               "timedOut": false,
-              "duration": 564,
+              "duration": 699,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -66,8 +66,8 @@
               "context": null,
               "code": "var token = null;\n(0, _supertest2.default)(_index.app).post('/api/users').send(testUser).expect(200).then(function (res) {\n  console.log(res.body);\n  // HTTP status should be 200\n  res.should.have.property('status').equal(200);\n  res.body.should.have.property('success').equal(true);\n  token = res.body.token;\n  (0, _supertest2.default)(_index.app).get('/api/movies').set('Authorization', token).then(function (res) {\n    // HTTP status should be 200\n    console.log(res.body);\n    res.should.have.property('status').equal(200);\n    done();\n  });\n}).catch(function (err) {\n  return done(err);\n});",
               "err": {},
-              "uuid": "5243af4b-fbe3-4016-bc0f-4c6fa0c73e8a",
-              "parentUUID": "025aba0c-9174-49bd-ac99-67632e8989e6",
+              "uuid": "28e1c27b-a1da-4895-85c2-6cae1f2462bd",
+              "parentUUID": "381d62b8-4cb1-4c47-9efd-5a460ac2a240",
               "isHook": false,
               "skipped": false
             },
@@ -84,36 +84,36 @@
               "context": null,
               "code": "var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step(\"next\", value); }, function (err) { step(\"throw\", err); }); } } return step(\"next\"); });",
               "err": {},
-              "uuid": "c305329c-840e-4c1a-8652-1646f87d3915",
-              "parentUUID": "025aba0c-9174-49bd-ac99-67632e8989e6",
+              "uuid": "e06e9a0b-b3d7-4414-accf-cee61dcd8f70",
+              "parentUUID": "381d62b8-4cb1-4c47-9efd-5a460ac2a240",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5243af4b-fbe3-4016-bc0f-4c6fa0c73e8a",
-            "c305329c-840e-4c1a-8652-1646f87d3915"
+            "28e1c27b-a1da-4895-85c2-6cae1f2462bd",
+            "e06e9a0b-b3d7-4414-accf-cee61dcd8f70"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 565,
+          "duration": 700,
           "root": false,
           "rootEmpty": false,
           "_timeout": 120000
         },
         {
-          "uuid": "c5d88754-7be2-4a56-a2e6-6ca429e0cde2",
+          "uuid": "f7bd8a93-b278-4595-b173-91bc0148971d",
           "title": "Users API test",
-          "fullFile": "/home/bosowski/Documents/college/labs/ewd-api-labs-2020/node-lab3/tests/testUsersApi.js",
+          "fullFile": "/home/bosowski/Documents/college/labs/ewd-api-labs-2020/expressApp/tests/testUsersApi.js",
           "file": "/tests/testUsersApi.js",
           "beforeHooks": [
             {
               "title": "\"before all\" hook",
               "fullTitle": "Users API test \"before all\" hook",
               "timedOut": false,
-              "duration": 189,
+              "duration": 179,
               "state": null,
               "speed": null,
               "pass": false,
@@ -122,8 +122,8 @@
               "context": null,
               "code": "testUser.username = 'user2';\ntestUser.password = 'test2';\ninvalidUser.username = 'chancer1';\ninvalidUser.password = 'bad1';\n_userModel2.default.create(testUser).then(function (result) {\n    return done();\n}).catch(function (err) {\n    return done(err);\n});",
               "err": {},
-              "uuid": "d281d65a-a90a-421a-a57e-9f372736f7b8",
-              "parentUUID": "c5d88754-7be2-4a56-a2e6-6ca429e0cde2",
+              "uuid": "31616f21-3a44-4caf-a348-9c417114ea2d",
+              "parentUUID": "f7bd8a93-b278-4595-b173-91bc0148971d",
               "isHook": true,
               "skipped": false
             }
@@ -134,7 +134,7 @@
               "title": "should register a user",
               "fullTitle": "Users API test should register a user",
               "timedOut": false,
-              "duration": 180,
+              "duration": 181,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -143,8 +143,8 @@
               "context": null,
               "code": "var newUser = {\n            username: \"frankx\",\n            password: \"apassword\"\n        };\n        (0, _supertest2.default)(_index.app).post('/api/users').send(newUser).query({\n            action: 'register'\n        }).expect('Content-type', /json/).expect(201) // This is the HTTP response\n        .then(function (res) {\n            // HTTP status should be 200\n            res.should.have.property('status').equal(201);\n            done();\n        }).catch(function (err) {\n            return done(err);\n        });",
               "err": {},
-              "uuid": "5be13830-c0a8-4bd3-b73f-c2fbe4099d2a",
-              "parentUUID": "c5d88754-7be2-4a56-a2e6-6ca429e0cde2",
+              "uuid": "50566eae-9fc3-46a5-9675-da2782a0ca9e",
+              "parentUUID": "f7bd8a93-b278-4595-b173-91bc0148971d",
               "isHook": false,
               "skipped": false
             },
@@ -152,7 +152,7 @@
               "title": "should return a user token for valid user",
               "fullTitle": "Users API test should return a user token for valid user",
               "timedOut": false,
-              "duration": 184,
+              "duration": 183,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -161,8 +161,8 @@
               "context": null,
               "code": "(0, _supertest2.default)(_index.app).post('/api/users').send(testUser).expect('Content-type', /json/).expect(200) // This is the HTTP response\n.then(function (res) {\n    // HTTP status should be 200\n    res.should.have.property('status').equal(200);\n    res.body.success.should.be.true;\n    res.body.token.should.exist;\n    done();\n}).catch(function (err) {\n    return done(err);\n});",
               "err": {},
-              "uuid": "982e0121-361c-4b8e-a872-25cb93a067dc",
-              "parentUUID": "c5d88754-7be2-4a56-a2e6-6ca429e0cde2",
+              "uuid": "557db772-4c10-4d8c-9d8b-0bfb1f376473",
+              "parentUUID": "f7bd8a93-b278-4595-b173-91bc0148971d",
               "isHook": false,
               "skipped": false
             },
@@ -170,7 +170,7 @@
               "title": "should not return a token for invalid user",
               "fullTitle": "Users API test should not return a token for invalid user",
               "timedOut": false,
-              "duration": 4,
+              "duration": 6,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -179,22 +179,22 @@
               "context": null,
               "code": "(0, _supertest2.default)(_index.app).post('/api/users').send(invalidUser).expect('Content-type', /json/).expect(401) // This is the HTTP response\n        .then(function (res) {\n            // HTTP status should be 401\n            res.should.have.property('status').equal(401);\n            _should2.default.not.exist(res.body.token);\n            done();\n        }).catch(function (err) {\n            return done(err);\n        });",
               "err": {},
-              "uuid": "37b48006-e078-4bd6-aa07-881c1659ae80",
-              "parentUUID": "c5d88754-7be2-4a56-a2e6-6ca429e0cde2",
+              "uuid": "9a6951a1-d9e4-4ad2-9070-d786fb1d25af",
+              "parentUUID": "f7bd8a93-b278-4595-b173-91bc0148971d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5be13830-c0a8-4bd3-b73f-c2fbe4099d2a",
-            "982e0121-361c-4b8e-a872-25cb93a067dc",
-            "37b48006-e078-4bd6-aa07-881c1659ae80"
+            "50566eae-9fc3-46a5-9675-da2782a0ca9e",
+            "557db772-4c10-4d8c-9d8b-0bfb1f376473",
+            "9a6951a1-d9e4-4ad2-9070-d786fb1d25af"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 368,
+          "duration": 370,
           "root": false,
           "rootEmpty": false,
           "_timeout": 120000
